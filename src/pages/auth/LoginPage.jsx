@@ -12,7 +12,6 @@ import {
   Typography,
 } from "@mui/material";
 import axios from "axios";
-import { setToken, setUser } from "../../utils/localStorage";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -20,14 +19,46 @@ function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const validateEmail = (value) => {
+    if (!value.trim()) {
+      return "Email is required";
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(value)) {
+      return "Enter a valid email address";
+    }
+
+    return "";
+  };
+
+  const validatePassword = (value) => {
+    if (!value.trim()) {
+      return "Password is required";
+    }
+
+    if (value.length < 6) {
+      return "Password must be at least 6 characters";
+    }
+
+    return "";
+  };
 
   const handleLogin = async () => {
     setError("");
 
-    if (!email || !password) {
-      setError("Enter Email and Password");
+    const emailValidationMessage = validateEmail(email);
+    const passwordValidationMessage = validatePassword(password);
+
+    setEmailError(emailValidationMessage);
+    setPasswordError(passwordValidationMessage);
+
+    if (emailValidationMessage || passwordValidationMessage) {
       return;
     }
 
@@ -101,7 +132,14 @@ function LoginPage() {
                 label="Email"
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  if (emailError) {
+                    setEmailError("");
+                  }
+                }}
+                error={!!emailError}
+                helperText={emailError}
                 fullWidth
               />
 
@@ -109,7 +147,14 @@ function LoginPage() {
                 label="Password"
                 type="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  if (passwordError) {
+                    setPasswordError("");
+                  }
+                }}
+                error={!!passwordError}
+                helperText={passwordError}
                 fullWidth
               />
 
