@@ -16,6 +16,7 @@ import ProfilePage from "./pages/dashboard/ProfilePage";
 import NotFoundPage from "./pages/dashboard/NotFoundPage";
 import DashboardLayout from "./pages/dashboard/DashboardLayout";
 import DashboardHomePage from "./pages/dashboard/DashboardHomePage";
+import ReportsPage from "./pages/dashboard/ReportsPage";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
         <Route path="add-expense" element={<AddExpensePage />} />
         <Route path="expenses/:id" element={<ExpenseDetailsPage />} />
         <Route path="expenses/edit/:id" element={<EditExpensePage />} />
+        <Route path="reports" element={<ReportsPage />} />
         <Route path="profile" element={<ProfilePage />} />
       </Route>
 
