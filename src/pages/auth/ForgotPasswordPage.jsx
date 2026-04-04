@@ -49,7 +49,7 @@ function ForgotPasswordPage() {
       setLoading(true);
 
       const response = await axios.post(
-        "http://localhost:3000/users/forgot-password",
+        `${import.meta.env.VITE_API_BASE_URL}/users/forgot-password`,
         {
           email: email,
         }

@@ -63,7 +63,7 @@ function VerifyOtpPage() {
     try {
       setLoading(true);
 
-      const response = await axios.post("http://localhost:3000/users/verify-otp", {
+      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/users/verify-otp`, {
         email: email,
         otp: otp,
       });
@@ -92,7 +92,7 @@ function VerifyOtpPage() {
     try {
       setResendLoading(true);
 
-      const response = await axios.post("http://localhost:3000/users/resend-otp", {
+      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/users/resend-otp`, {
         email: email,
       });
 

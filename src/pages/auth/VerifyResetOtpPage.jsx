@@ -59,7 +59,7 @@ function VerifyResetOtpPage() {
       setLoading(true);
 
       const response = await axios.post(
-        "http://localhost:3000/users/verify-reset-otp",
+        `${import.meta.env.VITE_API_BASE_URL}/users/verify-reset-otp`,
         {
           email: email,
           otp: otp,
@@ -94,7 +94,7 @@ function VerifyResetOtpPage() {
       setResendLoading(true);
 
       const response = await axios.post(
-        "http://localhost:3000/users/resend-reset-otp",
+        `${import.meta.env.VITE_API_BASE_URL}/users/resend-reset-otp`,
         {
           email: email,
         }

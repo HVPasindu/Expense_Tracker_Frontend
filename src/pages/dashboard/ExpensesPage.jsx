@@ -47,7 +47,7 @@ function ExpensesPage() {
       setError("");
 
       const response = await axios.get(
-        `http://localhost:3000/expenses?page=${currentPage}&limit=5`,
+        `${import.meta.env.VITE_API_BASE_URL}/expenses?page=${currentPage}&limit=5`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -78,7 +78,7 @@ function ExpensesPage() {
     try {
       setDeleteLoadingId(id);
 
-      await axios.delete(`http://localhost:3000/expenses/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/expenses/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -98,7 +98,7 @@ function ExpensesPage() {
       setError("");
 
       const response = await axios.get(
-        `http://localhost:3000/expense-slips/${expenseId}`,
+        `${import.meta.env.VITE_API_BASE_URL}/expense-slips/${expenseId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -150,7 +150,7 @@ function ExpensesPage() {
       formData.append("slip", file);
 
       await axios.post(
-        `http://localhost:3000/expense-slips/${expenseId}`,
+        `${import.meta.env.VITE_API_BASE_URL}/expense-slips/${expenseId}`,
         formData,
         {
           headers: {
@@ -184,7 +184,7 @@ function ExpensesPage() {
       setSlipDeleteLoadingId(slipId);
       setError("");
 
-      await axios.delete(`http://localhost:3000/expense-slips/slip/${slipId}`, {
+      await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/expense-slips/slip/${slipId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
