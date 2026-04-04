@@ -83,7 +83,7 @@ function EditExpensePage() {
         setLoading(true);
         setError("");
 
-        const response = await axios.get(`http://localhost:3000/expenses/${id}`, {
+        const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/expenses/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -131,7 +131,7 @@ function EditExpensePage() {
       setSubmitLoading(true);
 
       const response = await axios.put(
-        `http://localhost:3000/expenses/${id}`,
+        `${import.meta.env.VITE_API_BASE_URL}/expenses/${id}`,
         {
           title: title,
           amount: Number(amount),

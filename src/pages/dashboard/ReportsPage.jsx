@@ -55,7 +55,7 @@ function ReportsPage() {
       setLoadingType("date");
 
       const response = await axios.get(
-        `http://localhost:3000/expenses/date/${date}`,
+        `${import.meta.env.VITE_API_BASE_URL}/expenses/date/${date}`,
         { headers }
       );
 
@@ -83,7 +83,7 @@ function ReportsPage() {
       setLoadingType("week");
 
       const response = await axios.get(
-        `http://localhost:3000/expenses/weekly?start_date=${weekStartDate}&end_date=${weekEndDate}`,
+        `${import.meta.env.VITE_API_BASE_URL}/expenses/weekly?start_date=${weekStartDate}&end_date=${weekEndDate}`,
         { headers }
       );
 
@@ -108,7 +108,7 @@ function ReportsPage() {
       setLoadingType("month");
 
       const response = await axios.get(
-        `http://localhost:3000/expenses/monthly?year=${year}&month=${monthValue}`,
+        `${import.meta.env.VITE_API_BASE_URL}/expenses/monthly?year=${year}&month=${monthValue}`,
         { headers }
       );
 
@@ -136,7 +136,7 @@ function ReportsPage() {
       setLoadingType("range");
 
       const response = await axios.get(
-        `http://localhost:3000/expenses/date-range?start_date=${rangeStartDate}&end_date=${rangeEndDate}`,
+        `${import.meta.env.VITE_API_BASE_URL}/expenses/date-range?start_date=${rangeStartDate}&end_date=${rangeEndDate}`,
         { headers }
       );
 

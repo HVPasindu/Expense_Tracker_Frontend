@@ -99,7 +99,7 @@ function AddExpensePage() {
       setLoading(true);
 
       const response = await axios.post(
-        "http://localhost:3000/expenses",
+        `${import.meta.env.VITE_API_BASE_URL}/expenses`,
         {
           title: title,
           amount: Number(amount),

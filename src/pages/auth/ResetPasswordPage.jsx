@@ -80,7 +80,7 @@ function ResetPasswordPage() {
       setLoading(true);
 
       const response = await axios.post(
-        "http://localhost:3000/users/reset-password",
+        `${import.meta.env.VITE_API_BASE_URL}/users/reset-password`,
         {
           email: email,
           new_password: newPassword,

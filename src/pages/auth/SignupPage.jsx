@@ -127,7 +127,7 @@ function SignupPage() {
     try {
       setLoading(true);
 
-      await axios.post("http://localhost:3000/users/register", {
+      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/users/register`, {
         name: name,
         email: email,
         password: password,
