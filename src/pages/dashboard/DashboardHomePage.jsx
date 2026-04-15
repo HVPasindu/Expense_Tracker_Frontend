@@ -33,6 +33,36 @@ function DashboardHomePage() {
   const user = JSON.parse(localStorage.getItem("user")) || null;
   const token = localStorage.getItem("token");
 
+  // useEffect(() => {
+  //   const fetchDashboardSummary = async () => {
+  //     if (!token) {
+  //       navigate("/login");
+  //       return;
+  //     }
+
+  //     try {
+  //       setLoading(true);
+
+  //       const response = await axios.get(
+  //         `${import.meta.env.VITE_API_BASE_URL}/expenses/dashboard-summary`,
+  //         {
+  //           headers: {
+  //             Authorization: `Bearer ${token}`,
+  //           },
+  //         }
+  //       );
+
+  //       setSummary(response.data.summary);
+  //     } catch (err) {
+  //       setError(err.response?.data?.message || "Failed to load dashboard");
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchDashboardSummary();
+  // }, [navigate, token]);
+
   useEffect(() => {
     const fetchDashboardSummary = async () => {
       if (!token) {
@@ -43,8 +73,10 @@ function DashboardHomePage() {
       try {
         setLoading(true);
 
+        const today = new Date().toLocaleDateString("en-CA");
+
         const response = await axios.get(
-          `${import.meta.env.VITE_API_BASE_URL}/expenses/dashboard-summary`,
+          `${import.meta.env.VITE_API_BASE_URL}/expenses/dashboard-summary?today=${today}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
